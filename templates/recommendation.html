@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20230923/pngtree-an-image-of-four-small-plants-on-soil-image_13287443.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+        }
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent header background */
+            color: #fff;
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            padding: 20px;
+        }
+        section {
+            background-color: rgba(255, 255, 255, 0.8); /* More transparent background for the section */
+            border-radius: 8px;
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1, h2, h3 {
+            margin: 0;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin-top: 20px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+        .button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Enhance Your Soil for Optimal Crop Yield</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Soil and Fertilizer Recommendations</h2>
+
+            <h3>Additional Nutrients Required</h3>
+            <p>Nitrogen: {{ n_required }} units{% if n_required < 0 %} (Excess){% endif %}</p>
+            {% if n_remedy %}
+                <p><strong>Remedy for excess nitrogen:</strong> {{ n_remedy }}</p>
+            {% endif %}
+            <p>Phosphorus: {{ p_required }} units{% if p_required < 0 %} (Excess){% endif %}</p>
+            {% if p_remedy %}
+                <p><strong>Remedy for excess phosphorus:</strong> {{ p_remedy }}</p>
+            {% endif %}
+            <p>Potassium: {{ k_required }} units{% if k_required < 0 %} (Excess){% endif %}</p>
+            {% if k_remedy %}
+                <p><strong>Remedy for excess potassium:</strong> {{ k_remedy }}</p>
+            {% endif %}
+
+            <h3>Fertilizer Recommendations</h3>
+            <p>Urea: {{ urea_required }} Kg/Ha</p>
+            <p>SSP: {{ ssp_required }} Kg/Ha</p>
+            <p>MOP: {{ mop_required }} Kg/Ha</p>
+
+            {% if moisture_advice %}
+                <h3>Additional Moisture Advice</h3>
+                <p>{{ moisture_advice }}</p>
+            {% endif %}
+
+            {% if ph_advice %}
+                <h3>Soil pH Advice</h3>
+                <p>{{ ph_advice }}</p>
+            {% endif %}
+
+            <h3>Crop Recommendation for Better Yield</h3>
+            <p>The closest crop based on soil conditions is <strong>{{ closest_crop }}</strong>. However, based on the soil conditions, the following crops may also be suitable:</p>
+            <ul>
+                {% if recommended_crops %}
+                    {% for rec_crop in recommended_crops %}
+                        <li>{{ rec_crop }}</li>
+                    {% endfor %}
+                {% else %}
+                    <li>No other suitable crops found based on current soil conditions.</li>
+                {% endif %}
+            </ul>
+
+         
+
+            <!-- Home Button -->
+            <a href="{{ url_for('index') }}" class="button">Home</a>
+            <a href="{{ url_for('download_pdf', crop=crop, n_required=n_required, p_required=p_required, k_required=k_required, urea_required=urea_required, ssp_required=ssp_required, mop_required=mop_required, moisture=moisture, moisture_advice=moisture_advice, ph_advice=ph_advice, n_remedy=n_remedy, p_remedy=p_remedy, k_remedy=k_remedy, recommended_crops=recommended_crops) }}">Download PDF</a>
+        </section>
+    </main>
+    
+</body>
+</html>

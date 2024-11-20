@@ -1,0 +1,61 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('https://live.staticflickr.com/5824/20548482625_1331124660.jpg') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* Centered and Highlighted TerraFoster title at the top */
+h1 {
+    font-size: 4em;
+    color: #007bff;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px; /* Space from the top of the page */
+}
+
+/* Main container styling */
+main {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.8); /* Slightly transparent background for readability */
+    border-radius: 8px;
+    margin-top: 20px;
+}
+
+/* Paragraph styling */
+.description p {
+    font-size: 1.2em;
+    color: black;
+    margin: 0 0 20px 0; /* No top margin, space below the paragraph */
+    line-height: 1.6;
+}
+
+/* Center and style the button */
+.analysis-button {
+    display: flex;
+    justify-content: center; /* Center the button horizontally */
+    margin-top: 20px;
+}
+
+.analysis-button button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: white;
+    font-size: 1.2em;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.analysis-button button:hover {
+    background-color: #0056b3;
+}

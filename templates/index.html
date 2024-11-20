@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TerraFoster</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    <style>
+        footer {
+            margin-top: 20px;
+        }
+        .footer-container {
+            display: flex;
+            align-items: flex-start; /* Align items at the top */
+            gap: 40px; /* Increase space between images */
+        }
+        .footer-item {
+            text-align: left;
+            flex: 1; /* Allows items to grow and fill the container */
+        }
+        .footer-item img {
+            height: auto; /* Maintain aspect ratio */
+            display: block;
+        }
+        #agri-image, #organic-image {
+            max-width: 400px; /* Set both images to the same width */
+        }
+        .footer-item .caption {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            margin-top: 10px;
+        }
+        .news-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #f4f4f4; /* Light grey background */
+            border-radius: 8px;
+        }
+        .news-section h2 {
+            margin-top: 0;
+        }
+        .news-item {
+            margin-bottom: 20px;
+        }
+        .news-item h3 {
+            margin: 0;
+        }
+        .news-item p {
+            margin: 5px 0 0;
+        }
+        .youtube-section, .live-news-section {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #e0e0e0;
+            border-radius: 8px;
+        }
+        .youtube-section h2, .live-news-section h2 {
+            margin-top: 0;
+        }
+        iframe {
+            width: 100%;
+            height: 315px; /* Standard YouTube embed size */
+            border: none;
+            margin-bottom: 20px;
+        }
+        .live-news-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        .live-news-links li {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>TerraFoster</h1>
+    </header>
+    <main>
+        <section class="description">
+            <p>Welcome to TerraFoster, where we explore the science of agriculture and soil analysis. Our mission is to help you understand the intricacies of soil health and its impact on agricultural productivity. Stay informed with the latest trends and developments in the field.</p>
+        </section>
+        <section class="analysis-button">
+            <a href="{{ url_for('login') }}"><button>Soil Analysis</button></a>
+        </section>
+    </main>
+
+    <!-- Adding two images horizontally with increased space between them -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-item">
+                <a href="https://agribegri.com" target="_blank">
+                    <img id="agri-image" src="https://cdn.browsercam.com/headers/com.agribegri-header.png" alt="Agribegri Shopping">
+                </a>
+                <div class="caption">Fertilizer Shopping</div>
+            </div>
+            <div class="footer-item">
+                <a href="https://organicbazar.net/collections/soil-fertilizer?srsltid=AfmBOoqEwrdb-wOPt0Dt0QovcasZbmQ5YcR2NqaFXIbEP8gaa89O6Hx0" target="_blank">
+                    <img id="organic-image" src="https://i.ytimg.com/vi/DAFftTMsJps/maxresdefault.jpg" alt="Organic Fertilizer">
+                </a>
+                <div class="caption">Organic Fertilizer</div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- News Section -->
+    <section class="news-section">
+        <h2>Latest Agriculture News</h2>
+        <div class="news-item">
+            <h3>Innovative Soil Health Monitoring Technologies</h3>
+            <p>Recent advancements in soil health monitoring technologies are transforming agriculture. New sensors and data analytics tools are providing farmers with real-time insights into soil conditions, enabling better decision-making and more efficient use of resources.</p>
+        </div>
+        <div class="news-item">
+            <h3>Sustainable Farming Practices for the Future</h3>
+            <p>As climate change impacts become more pronounced, sustainable farming practices are increasingly vital. Learn about the latest strategies in conservation tillage, organic farming, and crop rotation that help maintain soil health and enhance productivity.</p>
+        </div>
+        <div class="news-item">
+            <h3>Breakthroughs in Fertilizer Efficiency</h3>
+            <p>New research into fertilizer efficiency is leading to the development of more effective products that reduce waste and environmental impact. Discover how these innovations are helping farmers maximize crop yields while minimizing their ecological footprint.</p>
+        </div>
+    </section>
+
+    <!-- YouTube Section for Sustainable Agriculture -->
+    <section class="youtube-section">
+        <h2>Watch: Sustainable Agriculture on YouTube</h2>
+        <iframe src="https://www.youtube.com/embed/DAFftTMsJps" title="Sustainable Agriculture YouTube Channel"></iframe>
+        <p>Explore more videos on sustainable agriculture by visiting the official YouTube channel <a href="https://www.youtube.com/@TheAdvanceAgriculture?si=E6e8gZ4GmYtMyT_u" target="_blank">The Advance Agriculture</a>.</p>
+    </section>
+
+    <!-- Live News Section -->
+    <section class="live-news-section">
+        <h2>Live Agriculture News</h2>
+        <ul class="live-news-links">
+            <li><a href="https://www.reuters.com/news/archive/agriculture" target="_blank">Reuters Agriculture News</a></li>
+            <li><a href="https://www.nbcnews.com/business/consumer" target="_blank">NBC Business & Agriculture</a></li>
+        </ul>
+    </section>
+
+</body>
+</html>

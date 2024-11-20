@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil and Crop Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.5; /* Adjust line height for readability */
+        }
+        h1, h2, h3 {
+            margin: 0;
+            color: #333;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        h3 {
+            margin-top: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 5px;
+        }
+        p {
+            margin: 10px 0;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Soil and Crop Recommendations</h1>
+
+    <h2>User Entered Values</h2>
+    <p><strong>Nitrogen:</strong> {{ n }} units</p>
+    <p><strong>Phosphorus:</strong> {{ p }} units</p>
+    <p><strong>Potassium:</strong> {{ k }} units</p>
+    <p><strong>Soil Moisture:</strong> {{ moisture }}</p>
+    <p><strong>pH Level:</strong> {{ ph }}</p>
+
+    <h2>Additional Nutrients Required</h2>
+    <p><strong>Nitrogen:</strong> {{ n_required }} units{% if n_required < 0 %} (Excess){% endif %}</p>
+    {% if n_remedy %}
+        <p><strong>Remedy for excess nitrogen:</strong> {{ n_remedy }}</p>
+    {% endif %}
+    <p><strong>Phosphorus:</strong> {{ p_required }} units{% if p_required < 0 %} (Excess){% endif %}</p>
+    {% if p_remedy %}
+        <p><strong>Remedy for excess phosphorus:</strong> {{ p_remedy }}</p>
+    {% endif %}
+    <p><strong>Potassium:</strong> {{ k_required }} units{% if k_required < 0 %} (Excess){% endif %}</p>
+    {% if k_remedy %}
+        <p><strong>Remedy for excess potassium:</strong> {{ k_remedy }}</p>
+    {% endif %}
+
+    <h2>Fertilizer Recommendations</h2>
+    <p><strong>Urea:</strong> {{ urea_required }} Kg/Ha</p>
+    <p><strong>SSP:</strong> {{ ssp_required }} Kg/Ha</p>
+    <p><strong>MOP:</strong> {{ mop_required }} Kg/Ha</p>
+
+    {% if moisture_advice %}
+        <h3>Additional Moisture Advice</h3>
+        <p>{{ moisture_advice }}</p>
+    {% endif %}
+
+    {% if ph_advice %}
+        <h3>Soil pH Advice</h3>
+        <p>{{ ph_advice }}</p>
+    {% endif %}
+
+    <h3>Crop Recommendation for Better Yield</h3>
+    <p>The closest crop based on soil conditions is <strong>{{ closest_crop }}</strong>. However, based on the soil conditions, the following crops may also be suitable:</p>
+    <ul>
+        {% if recommended_crops %}
+            {% for rec_crop in recommended_crops %}
+                <li>{{ rec_crop }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No other suitable crops found based on current soil conditions.</li>
+        {% endif %}
+    </ul>
+</body>
+</html>

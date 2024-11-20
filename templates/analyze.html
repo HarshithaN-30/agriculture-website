@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soil Analysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>
+        /* Optional: Add a background image */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: url('https://wcngg.com/wp-content/uploads/2020/01/soilimage.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white; /* Adjust text color for visibility on background */
+        }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 60px); /* Adjust based on header height */
+        }
+        section {
+            background-color: rgba(255, 255, 255, 0.8); /* White background with some transparency */
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px; /* Adjust width as needed */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a shadow effect */
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="number"], select {
+            width: calc(100% - 16px); /* Adjust width to fit padding */
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full width button */
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Soil Analysis</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Input Soil Data</h2>
+            <form method="POST" action="{{ url_for('analyze') }}">
+                <div class="form-group">
+                    <label for="crop-select">Select a crop:</label>
+                    <select id="crop-select" name="crop" required>
+                        <option value="rice">Rice</option>
+                        <option value="sugarcane">Sugarcane</option>
+                        <option value="cotton">Cotton</option>
+                        <option value="ragi">Ragi</option>
+                        <option value="wheat">Wheat</option>
+                        <option value="maize">Maize</option>
+                        <option value="potato">Potato</option>
+                        <option value="tomato">Tomato</option>
+                        <option value="mango">Mango</option>
+                        <option value="banana">Banana</option>
+                        <option value="groundnut">Groundnut</option>
+                        <option value="sunflower">Sunflower</option>
+                        <option value="soybean">Soybean</option>
+                        <option value="chickpea">Chickpea</option>
+                        <option value="onion">Onion</option>
+                        <option value="cabbage">Cabbage</option>
+                        <option value="carrot">Carrot</option>
+                        <option value="apple">Apple</option>
+                        <option value="tea">Tea</option>
+                        <option value="coffee">Coffee</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="n">Nitrogen (N):</label>
+                    <input type="number" id="n" name="n" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="p">Phosphorus (P):</label>
+                    <input type="number" id="p" name="p" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="k">Potassium (K):</label>
+                    <input type="number" id="k" name="k" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="moisture">Moisture (%):</label>
+                    <input type="number" id="moisture" name="moisture" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="ph">pH Level:</label>
+                    <input type="number" id="ph" name="ph" step="0.01" required>
+                </div>
+
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
